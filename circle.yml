@@ -7,9 +7,5 @@ dependencies:
         - echo y | android update sdk --no-ui --filter "android-22,build-tools-23.0.0 rc2"
 
 test:
-    pre:
-        - $ANDROID_HOME/tools/emulator -avd test-target -no-skin -no-audio -no-window -no-boot-anim:
-            background: true
-            parallel: true
     override:
-        - ./gradlew assembleDebugAndroidTest
+        - echo "Nothing to do here"
