@@ -13,4 +13,4 @@ test:
             background: true
             parallel: true
     override:
-        - ./gradlew build
+        - ./gradlew assembleDebug
