@@ -1,7 +1,7 @@
 machine:
     environment:
         ANDROID_HOME: /usr/local/android-sdk-linux
-        JAVA_OPTS: "-Xmx1048m -XX:MaxPermSize=512m"
+        JAVA_OPTS: "-Xmx2048m -XX:MaxPermSize=1024m"
         
 dependencies:
     pre:
@@ -11,7 +11,7 @@ dependencies:
 test:
     pre:
         - $ANDROID_HOME/tools/emulator -avd test-target -no-skin -no-audio -no-window -no-boot-anim:
-        background: true
-        parallel: true
+            background: true
+            parallel: true
     override:
-        - ./gradlew assembleDebug
+        - ./gradlew connectedAndroidTestDebug -PdisablePreDex
