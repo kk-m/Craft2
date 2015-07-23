@@ -1,0 +1,9 @@
+test:
+    pre:
+        - $ANDROID_HOME/tools/emulator -avd test-target -no-skin -no-audio -no-window -no-boot-anim:
+            background: true
+            parallel: true
+        - ./wait.sh:
+            parallel: true
+    override:
+        - ./gradlew connectedAndroidTestDebug -PdisablePreDex
