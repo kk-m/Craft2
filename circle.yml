@@ -5,7 +5,7 @@ machine:
         
 dependencies:
     override:
-        - echo y | android update sdk --no-ui --filter "android-22,build-tools-23.0.0 rc2"
+        - echo y | android update sdk --no-ui --filter "android-22,build-tools-23.0.0 rc3"
 
 test:
     pre:
