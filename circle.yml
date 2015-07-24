@@ -18,7 +18,7 @@ dependencies:
         - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
         - echo y | android update sdk --no-ui --all --filter "extra-android-support"
 
-        # appcompat-v7以降を使っている場合に必要　じゃなかった
+        # appcompat-v7以降を使っている場合に必要 じゃなかった
         # - echo y | android update lib-project --path ./appcompat --target android-22
         # - echo y | android update project --path ./core --library ../appcompat --target android-22
 
@@ -32,16 +32,16 @@ test:
             background: true
             parallel: true
     override:
-        # - ./gradlew assembleDebug
+        - ./gradlew assembleDebug
 
         # エミュレータに対してテストを実行
-        - ./gradlew connectedAndroidTest
+        # - ./gradlew connectedAndroidTest
 
         # アーティファクトにビルド出力をコピー
-        - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
+        # - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
 
         # テスト結果ディレクトリにテスト結果をコピー
-        - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+        # - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
 
 
 
