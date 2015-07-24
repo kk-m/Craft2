@@ -24,24 +24,17 @@ dependencies:
 
         # successのときはメールこない
 
-
 test:
-    pre:
-        # エミュレータを起動
-        - $ANDROID_HOME/tools/emulator -avd test-target -no-skin -no-audio -no-window -no-boot-anim:
-            background: true
-            parallel: true
-    override:
-        # - ./gradlew assembleDebug
-
-        # エミュレータに対してテストを実行
-        - ./gradlew connectedAndroidTest
-
-        # アーティファクトにビルド出力をコピー
-        # - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
-
-        # テスト結果ディレクトリにテスト結果をコピー
-        # - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
-
-        # Executing tasks: [:app:assembleDebug, :app:assembleDebugAndroidTest]
-
+  override:
+    # start the emulator
+    - emulator -avd circleci-android22 -no-audio -no-window:
+        background: true
+        parallel: true
+    # wait for it to have booted
+    - circle-android wait-for-boot
+    # run tests  against the emulator.
+    - ./gradlew connectedAndroidTest
+    # copy the build outputs to artifacts
+    - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
+    # copy the test results to the test results directory.
+    - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
