@@ -12,8 +12,8 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void test1() throws Exception {
-        String expected = "a";
-        String actual = "a";
+        String expected = "はい";
+        String actual = "はい";
         assertEquals(expected, actual);
     }
 }
