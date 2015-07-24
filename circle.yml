@@ -4,13 +4,15 @@ machine:
         JAVA_OPTS: "-Xmx2048m -XX:MaxPermSize=1024m"
 
 dependencies:
-        pre:
-          # toolsをアップデート
-          - echo y | android update sdk --no-ui --all --filter "platform-tools,tools"
+    pre:
+        # toolsをアップデート
+        - echo y | android update sdk --no-ui --all --filter "platform-tools,tools"
 
-          # SDKとビルドツールのインストール。
-          - echo y | android update sdk --no-ui --all --filter "android-22,build-tools-22.0.0"
-
+        # SDKとビルドツールのインストール。
+        - echo y | android update sdk --no-ui --all --filter "android-22,build-tools-22.0.0"
+    override:
+        # それ以外の依存モジュール
+        - ./gradlew dependencies
 test:
     pre:
         - $ANDROID_HOME/tools/emulator -avd test-target -no-skin -no-audio -no-window -no-boot-anim:
