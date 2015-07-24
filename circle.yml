@@ -11,6 +11,12 @@ dependencies:
         # SDKとビルドツールのインストール
         - echo y | android update sdk --no-ui --all --filter "android-22,build-tools-22.0.0"
 
+        # supportライブラリをインストールするために必要です。これがないと下記のエラーが出ました。
+        # ① projectsCould not resolve com.android.support:support-v4:20.0.+.
+        # ② projectsCould not GET 'http://maven.aviary.com/repo/release/com/android/support/support-v4/'. Received status code 403 from server: Forbidden
+        - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
+        - echo y | android update sdk --no-ui --all --filter "extra-android-support"
+
         - echo y | android update lib-project --path ./appcompat --target android-22
         - echo y | android update project --path ./core --library ../appcompat --target android-22
 
