@@ -11,7 +11,8 @@ dependencies:
         # SDKとビルドツールのインストール
         - echo y | android update sdk --no-ui --all --filter "android-22,build-tools-22.0.0"
 
-        # Could not find com.android.support:appcompat-v7:22.2.1.　のため　下記を追加
+        # 全角スペースがコメントでもだめみたい https://circleci.com/gh/kk-m/Craft2/29
+        # Could not find com.android.support:appcompat-v7:22.2.1.のため下記を追加
 
         # supportライブラリをインストールするために必要
         - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
