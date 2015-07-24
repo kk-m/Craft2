@@ -32,10 +32,10 @@ test:
             background: true
             parallel: true
     override:
-        - ./gradlew assembleDebug
+        # - ./gradlew assembleDebug
 
         # エミュレータに対してテストを実行
-        # - ./gradlew connectedAndroidTest
+        - ./gradlew connectedAndroidTest
 
         # アーティファクトにビルド出力をコピー
         # - cp -r my-project/build/outputs $CIRCLE_ARTIFACTS
@@ -43,5 +43,5 @@ test:
         # テスト結果ディレクトリにテスト結果をコピー
         # - cp -r my-project/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
 
-
+        # Executing tasks: [:app:assembleDebug, :app:assembleDebugAndroidTest]
 
